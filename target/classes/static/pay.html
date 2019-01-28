@@ -1,0 +1,27 @@
+<script>
+    function onBridgeReady(){
+        WeixinJSBridge.invoke(
+            'getBrandWCPayRequest', {
+                "appId":"wxd898fcb01713c658",     //Name of public account, passed by seller
+                "timeStamp":"1499569906",         //Time stamp, from 1970
+                "nonceStr":"bVsQpcfsKUAzO8r0", //Random sequence
+                "package":"prepay_id=wx2017070911112036b51eaddc0529394957",
+                "signType":"MD5",         //WeChat signature type
+                "paySign":"78CA85306AB823156E1032EFB5BB1C76" //WeChat signature
+            },
+            function(res){
+                if(res.err_msg == "get_brand_wcpay_request:ok" ) {}
+            }
+        );
+    }
+    if (typeof WeixinJSBridge == "undefined"){
+        if( document.addEventListener ){
+            document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+        }else if (document.attachEvent){
+            document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+            document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+        }
+    }else{
+        onBridgeReady();
+    }
+</script>
